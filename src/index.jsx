@@ -1,23 +1,24 @@
 // external modules
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
 
 // internal modules
 import '../assets/stylesheets/application.scss';
 import App from './components/app';
 
 // State and reducers
-// const reducers = combineReducers({
-//   changeMe: (state = null, action) => state
-// });
+const reducers = combineReducers({
+  changeMe: (state = null, action) => state
+});
 
 // render an instance of the component in the DOM
 ReactDOM.render(
-  <App />, document.getElementById('root')
+  <Provider store={createStore(reducers)}>
+    <App />, document.getElementById('root')
+  </Provider>,
 );
 
 
-  // <Provider store={createStore(reducers)}>
-  // </Provider>,
+
