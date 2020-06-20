@@ -1,22 +1,23 @@
 // external modules
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import '../assets/stylesheets/application.scss';
 import { createStore } from 'redux';
 import rootReducer from './reducers';
-
-// internal modules
-import '../assets/stylesheets/application.scss';
+import { Provider } from 'react-redux';
 import App from './components/app';
 
 // Store
-const store = createStore(rootReducer)
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-// render an instance of the component in the DOM
 ReactDOM.render(
-  <Provider>
-    <App />, document.getElementById('root')
-  </Provider>
+  <Provider store = {store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
 
 

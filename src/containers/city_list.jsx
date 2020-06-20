@@ -1,35 +1,29 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useSelector } from 'react-redux';
 
-import City from './city'
+import City from './city';
 
-class CityList extends Component {
-  listCities = () => {
-    return this.props.cities.map((city) => {
+const CityList = () => {
+  const cities = useSelector(state => state.cities);
+
+  const listCities = () => {
+    return cities.map((city) => {
       return (
         <City
           key={city.name}
           name={city.name}
           address={city.address}
-          />
+        />
       );
-    }
-  )};
-
-  render() {
-    return (
-      <ul className="cities">
-        { this.listCities() }
-      </ul>
-    );
+    });
   }
+
+  return (
+    <ul className="cities">
+      { listCities() }
+    </ul>
+  );
+
 };
 
-function mapStateToProps(state) {
-  return {
-    cities: state.cities
-  };
-}
-
-export default connect(mapStateToProps)(CityList);
+export default CityList;
