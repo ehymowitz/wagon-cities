@@ -10,6 +10,7 @@ const CityList = () => {
     return cities.map((city) => {
       return (
         <City
+          city={city}
           key={city.name}
           name={city.name}
           address={city.address}

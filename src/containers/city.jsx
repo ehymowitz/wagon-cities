@@ -8,7 +8,7 @@ const City = (props) => {
   return (
     <li
       className="list-group-item"
-      onClick={() => dispatch(selectCity)}
+      onClick={() => dispatch(selectCity(props.city))}
       >
       {props.name}
     </li>
